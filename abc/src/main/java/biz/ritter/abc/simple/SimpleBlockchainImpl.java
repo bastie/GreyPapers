@@ -23,4 +23,30 @@ public class SimpleBlockchainImpl {
 	 */
 	private LinkedList<SimpleBlockImpl> chain = new LinkedList<SimpleBlockImpl>();
 	
+	/**
+	 * Standarkonstruktor
+	 */
+	public SimpleBlockchainImpl () {
+		chain.add(new SimpleBlockImpl("No previous block"));
+	}
+	
+	public SimpleBlockchainImpl addNextBlock (SimpleBlockImpl newBlock) {
+		final String previousHashValue = newBlock.getHashValuePrevious();
+		if (previousHashValue.equals(this.getLastHashCode())) {
+			this.chain.add(newBlock);
+		}
+		else {
+			throw new IllegalArgumentException("This block does not follow!");
+		}
+		
+		return this;
+	}
+	
+	/**
+	 * Liefert den letzten Blockhash zurück
+	 * @return
+	 */
+	public String getLastHashCode () {
+		return chain.getLast().hashValueThisBlock ();
+	}
 }

@@ -19,7 +19,7 @@ public class AttackBlockChainApplication {
 
 	/**
 	 * Startet einen Angriff auf die angegebenen Blockchain
-	 * @param arguments
+	 * @param arguments ignored
 	 */
 	public static void main(final String ... arguments) {
 		for (String argument : arguments) {
@@ -28,5 +28,7 @@ public class AttackBlockChainApplication {
 					
 			}
 		}
+		new AttackBlockChainSimple().initalize().attack();
 	}
+	
 }
